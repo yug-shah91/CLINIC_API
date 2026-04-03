@@ -11,6 +11,9 @@ Role-based access — Doctor and Patient
 
 How to Run
 Create database: CREATE DATABASE clinic_db;
+
 Update application.properties with your DB password
+
 Run ClinicApiApplication.java
+
 Test endpoints using Postman
