@@ -1,7 +1,7 @@
 A REST API for managing a clinic — patients, appointments and prescriptions.
 
 Tech Stack
-Java | Spring Boot | Spring Security | JWT | PostgreSQL
+Java | Spring Boot | Spring Security | JWT | MySQl
 
 Features
 Patient registration and login
