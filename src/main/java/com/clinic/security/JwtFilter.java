@@ -46,7 +46,7 @@ public class JwtFilter extends OncePerRequestFilter {
             }
         }
 
-        // Step 7: Pass request to next filter or controller
+        //  Pass request to next filter or controller
         // ALWAYS call this — without it the request never reaches the controller
         filterChain.doFilter(request, response);
     }

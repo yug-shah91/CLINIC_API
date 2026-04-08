@@ -64,12 +64,12 @@ public class PatientService {
     public PatientResponse updateProfile(String email, PatientRequest request) {
         Patient patient = patientRepository.findByUserEmail(email)
                 .orElseThrow(() -> new ResourceNotFoundException("Patient profile not found"));
-        if (request.getName() != null)        patient.setName(request.getName());
+        if (request.getName() != null) patient.setName(request.getName());
         if (request.getDateOfBirth() != null) patient.setDateOfBirth(request.getDateOfBirth());
-        if (request.getPhone() != null)       patient.setPhone(request.getPhone());
-        if (request.getGender() != null)      patient.setGender(request.getGender());
-        if (request.getAddress() != null)     patient.setAddress(request.getAddress());
-        if (request.getBloodGroup() != null)  patient.setBloodGroup(request.getBloodGroup());
+        if (request.getPhone() != null) patient.setPhone(request.getPhone());
+        if (request.getGender() != null) patient.setGender(request.getGender());
+        if (request.getAddress() != null) patient.setAddress(request.getAddress());
+        if (request.getBloodGroup() != null) patient.setBloodGroup(request.getBloodGroup());
         return toResponse(patientRepository.save(patient));
     }
 

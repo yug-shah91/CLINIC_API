@@ -22,6 +22,6 @@ public class RegisterRequest {
     @Size(min = 6, message = "Password must be at least 6 characters")
     private String password;
 
-    // Role defaults to PATIENT if not provided
-    private Role role = Role.PATIENT;
+//    // Role defaults to PATIENT if not provided
+//    private Role role = Role.PATIENT;
 }

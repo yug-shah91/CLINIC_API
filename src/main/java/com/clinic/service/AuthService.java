@@ -25,11 +25,30 @@ public class AuthService {
         if (userRepository.existsByEmail(request.getEmail())) {
             throw new RuntimeException("Email already registered: " + request.getEmail());
         }
+
         User user = User.builder()
                 .name(request.getName())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .role(request.getRole() != null ? request.getRole() : Role.PATIENT)
+                .role(Role.PATIENT)
+                .build();
+        userRepository.save(user);
+        String token = jwtUtil.generateToken(user.getEmail());
+        return AuthResponse.builder()
+                .token(token).name(user.getName())
+                .email(user.getEmail()).role(user.getRole().name())
+                .message("Registration successful").build();
+    }
+
+    public AuthResponse registerAdmin(RegisterRequest request) {
+        if (userRepository.existsByEmail(request.getEmail())) {
+            throw new RuntimeException("Email already registered");
+        }
+        User user = User.builder()
+                .name(request.getName())
+                .email(request.getEmail())
+                .password(passwordEncoder.encode(request.getPassword()))
+                .role(Role.ADMIN)  // This endpoint always creates ADMIN
                 .build();
         userRepository.save(user);
         String token = jwtUtil.generateToken(user.getEmail());
